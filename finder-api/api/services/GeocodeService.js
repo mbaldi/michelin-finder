@@ -16,23 +16,39 @@ const client = axios.create({
   params: { key: sails.config.custom.GOOGLE_API_KEY, language: 'en' },
 });
 
-const getLocation = (geocoded) => {
-  const location = {
-    status: geocoded.status,
-  };
-  if (geocoded.status === 'OK') {
-    result = geocoded.results[0];
-    if (result.geometry.location) {
-      location.location = geocoded.results[0].geometry.location;
-    }
-    if (result.formatted_address) {
-      location.address = result.formatted_address;
-    }
-  }
-  return location;
-};
-
 module.exports = {
+  getLocation(geocoded) {
+    const location = {
+      status: geocoded.status,
+    };
+    if (geocoded.status === 'OK') {
+      result = geocoded.results[0];
+      if (result.geometry.location) {
+        location.location = geocoded.results[0].geometry.location;
+      }
+      if (result.formatted_address) {
+        location.address = result.formatted_address;
+      }
+    }
+    return location;
+  },
+
+  calculateDistanceinMiles(lat1, lng1, lat2, lng2) {
+    rlat1 = (lat1 * Math.PI) / 180;
+    rlng1 = (lng1 * Math.PI) / 180;
+    rlat2 = (lat2 * Math.PI) / 180;
+    rlng2 = (lng2 * Math.PI) / 180;
+
+    const distance =
+      3959 *
+      Math.acos(
+        Math.sin(rlat1) * Math.sin(rlat2) +
+          Math.cos(rlat1) * Math.cos(rlat2) * Math.cos(rlng1 - rlng2)
+      );
+
+    return parseFloat(distance.toFixed(2));
+  },
+
   async geocode(address) {
     const response = await client.get('geocode/json', {
       params: { address },
@@ -53,5 +69,17 @@ module.exports = {
     }
     const { data } = response;
     return getLocation(data);
+  },
+
+  getDistance(lat1, lng1, lat2, lng2) {
+    return {
+      distance: calculateDistanceinMiles(
+        parseFloat(lat1),
+        parseFloat(lng1),
+        parseFloat(lat2),
+        parseFloat(lng2)
+      ),
+      units: 'miles',
+    };
   },
 };

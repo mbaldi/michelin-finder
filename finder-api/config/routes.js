@@ -11,4 +11,5 @@
 module.exports.routes = {
   'POST /api/geocode': 'GeocodeController.geocode',
   'POST /api/reverseGeocode': 'GeocodeController.reverseGeocode',
+  'POST /api/calculateDistance': 'GeocodeController.calculateDistance',
 };
