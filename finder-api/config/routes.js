@@ -9,5 +9,6 @@
  */
 
 module.exports.routes = {
-  'GET /hello': 'HelloController.hello',
+  'POST /api/geocode': 'GeocodeController.geocode',
+  'POST /api/reverseGeocode': 'GeocodeController.reverseGeocode',
 };

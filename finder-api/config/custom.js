@@ -18,4 +18,6 @@ module.exports.custom = {
   // mailgunSecret: 'key-testkeyb183848139913858e8abd9a3',
   // stripeSecret: 'sk_test_Zzd814nldl91104qor5911gjald',
   // …
-}
+  GOOGLE_GEOCODE_ENDPOINT: 'https://maps.googleapis.com/maps/api',
+  GOOGLE_API_KEY: process.env.GOOGLE_API_KEY,
+};
