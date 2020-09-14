@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
-import { Typography } from 'antd';
+import { Typography, Divider } from 'antd';
+
 import Autocomplete from './components/Autocomplete';
+import Gallery from './components/Gallery';
 
 export const client = axios.create({
   baseURL: process.env.REACT_APP_API_URL,
@@ -18,21 +20,20 @@ const AppWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  // justify-content: center;
 `;
 
 const { Title } = Typography;
 
 const App = () => {
-  // const [message, setMessage] = useState('Loading...');
+  const [location, setLocation] = useState();
 
-  // useEffect(() => {
-  //   const getHello = async () => {
-  //     const hello = await client.get('/hello');
-  //     setMessage(hello.data.message);
-  //   };
-  //   getHello();
-  // }, []);
+  const handleAutoCompleteClick = async (address) => {
+    //geocode address
+    const response = await client.post('/geocode', {
+      address,
+    });
+    setLocation(response.data);
+  };
 
   return (
     <AppWrapper>
@@ -40,9 +41,11 @@ const App = () => {
         Welcome! we will find Michellin-rated restaurants near you
       </Title>
       <Autocomplete
-        placeholder="Please type your address"
-        onClick={(address) => console.log(address)}
+        placeholder="Please type your address or location"
+        onClick={handleAutoCompleteClick}
       />
+      <Divider />
+      {location && <Gallery location={location}></Gallery>}
     </AppWrapper>
   );
 };

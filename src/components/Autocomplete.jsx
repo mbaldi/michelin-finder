@@ -16,6 +16,7 @@ const Autocomplete = ({ placeholder, onClick }) => {
   let autocomplete;
   const inputRef = useRef(null);
   const [address, setAddress] = useState('');
+  const [disableButton, setDisableButton] = useState(true);
   useEffect(() => {
     // eslint-disable-next-line react-hooks/exhaustive-deps, no-undef
     autocomplete = new google.maps.places.Autocomplete(inputRef.current, {
@@ -32,8 +33,17 @@ const Autocomplete = ({ placeholder, onClick }) => {
       console.log(error);
     }
     if (place) {
+      setDisableButton(false);
       setAddress(place.formatted_address || '');
     }
+  };
+
+  const handleChange = (e) => {
+    const { value } = e.target;
+    if (value !== address) {
+      setDisableButton(true);
+    }
+    setAddress(value);
   };
 
   return (
@@ -44,11 +54,11 @@ const Autocomplete = ({ placeholder, onClick }) => {
         ref={inputRef}
         type="text"
         value={address}
-        onChange={(e) => setAddress(e.target.value)}
+        onChange={handleChange}
       />
       <Button
         type="primary"
-        disabled={!address}
+        disabled={disableButton}
         onClick={() => onClick(address)}
       >
         Go
