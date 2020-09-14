@@ -16,7 +16,7 @@ module.exports = {
       return res.status(200).send(response);
     } catch (e) {
       sails.log.error(e);
-      return e;
+      return res.serverError({ error: e.message });
     }
   },
 
@@ -30,7 +30,7 @@ module.exports = {
       return res.status(200).send(response);
     } catch (e) {
       sails.log.error(e);
-      return e;
+      return res.serverError({ error: e.message });
     }
   },
 
@@ -64,7 +64,7 @@ module.exports = {
       });
     } catch (e) {
       sails.log.error(e);
-      return e;
+      return res.serverError({ error: e.message });
     }
   },
 };
