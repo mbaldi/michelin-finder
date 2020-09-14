@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Gallery renders component 1`] = `
+<Fragment>
+  <Text>
+    Showing results for 
+    1600 Pennsylvania Avenue NW #0, Washington, DC 20500, USA
+  </Text>
+  <styled.div>
+    <Row
+      gutter={
+        Array [
+          32,
+          32,
+        ]
+      }
+    />
+  </styled.div>
+  <Alert
+    message="We coulndn't find any restaurants nerby"
+    type="info"
+  />
+</Fragment>
+`;

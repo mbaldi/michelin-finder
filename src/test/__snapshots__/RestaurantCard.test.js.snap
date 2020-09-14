@@ -1,0 +1,86 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Gallery renders component 1`] = `
+<Card
+  cover={
+    <Image
+      alt="The French Laundry"
+      height={300}
+      placeholder={
+        <Spin
+          size="large"
+          spinning={true}
+          wrapperClassName=""
+        />
+      }
+      src="https://axwwgrkdco.cloudimg.io/v7/mtp-cf-images.s3-eu-west-1.amazonaws.com/images/max/27d17f3c-82ab-4ddc-b3cb-181b03bd0d68.jpg?width=500&amp;sharp=1"
+    />
+  }
+>
+  <Meta
+    avatar={
+      <Space
+        direction="vertical"
+        size={0}
+      >
+        <div>
+          <ForwardRef(StarOutlined) />
+          <ForwardRef(StarOutlined) />
+          <ForwardRef(StarOutlined) />
+        </div>
+        <Title
+          level={3}
+        >
+          45.39
+        </Title>
+        <Text>
+          Miles away
+        </Text>
+      </Space>
+    }
+    description={
+      <Space
+        direction="vertical"
+        size={0}
+      >
+        <Text
+          type="secondary"
+        >
+          Contemporary
+        </Text>
+        <Text>
+          Yountville
+        </Text>
+        <ForwardRef(InternalButton)
+          block={false}
+          ghost={false}
+          htmlType="button"
+          icon={<ForwardRef(EnvironmentOutlined) />}
+          loading={false}
+          onClick={[Function]}
+          type="primary"
+        >
+          Get address
+        </ForwardRef(InternalButton)>
+      </Space>
+    }
+    title={
+      <ForwardRef(InternalButton)
+        block={false}
+        ghost={false}
+        htmlType="button"
+        loading={false}
+        onClick={[Function]}
+        size="middle"
+        type="text"
+      >
+        <Text
+          strong={true}
+        >
+          The French Laundry
+        </Text>
+      </ForwardRef(InternalButton)>
+    }
+  />
+</Card>
+`;
