@@ -105,23 +105,30 @@ describe('GeocodeController', () => {
       sails.services.geocodeservice.getDistance.restore();
     });
 
-    it('should return 400 if no 2 lat lng', (done) => {
+    it('should return 400 if no destination', (done) => {
       supertest(sails.hooks.http.app)
         .post('/api/calculateDistance')
-        .send({ lat1: 37.421, lng1: -122.084 })
+        .send({ source: { lat: 37.421, lng: -122.084 } })
         .expect(400, done);
     });
-    it('should return distance for 2 lat lng ', (done) => {
+    it('should return distance for destinations', (done) => {
       supertest(sails.hooks.http.app)
         .post('/api/calculateDistance')
-        .send({ lat1: 37.421, lng1: -122.084, lat2: 38.421, lng2: -117.084 })
+        .send({
+          source: { lat: 37.421, lng: -122.084 },
+          destinations: [{ id: 1, lat: 38.421, lng: -117.084 }],
+        })
         .expect(200, (err, res) => {
           if (err) {
             sails.log.error(err);
             return done(err);
           }
           const response = res.body;
-          assert(response.distance === 24.4);
+          assert(response.distances.length === 1);
+          assert(response.distances[0].id === 1);
+          assert(response.distances[0].lat === 38.421);
+          assert(response.distances[0].lng === -117.084);
+          assert(response.distances[0].distance === 24.4);
           return done();
         });
     });

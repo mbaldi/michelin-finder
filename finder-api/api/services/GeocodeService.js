@@ -57,7 +57,7 @@ module.exports = {
       throw new Error('Geocode API Error');
     }
     const { data } = response;
-    return getLocation(data);
+    return this.getLocation(data);
   },
 
   async reverseGeocode(lat, lng) {
@@ -68,12 +68,12 @@ module.exports = {
       throw new Error('Geocode API Error');
     }
     const { data } = response;
-    return getLocation(data);
+    return this.getLocation(data);
   },
 
   getDistance(lat1, lng1, lat2, lng2) {
     return {
-      distance: calculateDistanceinMiles(
+      distance: this.calculateDistanceinMiles(
         parseFloat(lat1),
         parseFloat(lng1),
         parseFloat(lat2),
