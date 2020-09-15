@@ -1,0 +1,19 @@
+version: '3.7'
+
+services:
+  michelin-finder:
+    image: michelin-finder
+    container_name: michelin-finder
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 3000:80
+  finder-api:
+    image: finder-api
+    container_name: finder-api
+    build:
+      context: ./finder-api
+      dockerfile: Dockerfile
+    ports:
+      - 1337:1337
