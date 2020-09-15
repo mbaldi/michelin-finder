@@ -6,6 +6,9 @@ This is a simple web application that finds Michelin-rated restaurants near a sp
 
 It relies on Google's Geocoding, Reverse Geocoding and Places APIs
 
+## Live Demo
+https://michelin-finder.herokuapp.com/
+
 ## Tech Stack
 
 - Backend
