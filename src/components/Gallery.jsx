@@ -19,11 +19,11 @@ const Gallery = ({ location }) => {
   useEffect(() => {
     const getRestaurants = async () => {
       setLoading(true);
-      const result = await client.post('/restaurantsForLocation', {
+      const { data } = await client.post('/restaurantsForLocation', {
         lat: location.location.lat,
         lng: location.location.lng,
       });
-      setRestaurants(result.data);
+      setRestaurants(data);
       setLoading(false);
     };
     getRestaurants();

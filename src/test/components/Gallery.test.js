@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Gallery from '../components/Gallery';
+import Gallery from '../../components/Gallery';
 
 describe('Gallery', () => {
   it('renders component', () => {

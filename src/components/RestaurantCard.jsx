@@ -19,11 +19,10 @@ const Gallery = ({ currentAddress, restaurant }) => {
   const handleGetAddress = async (id, lat, lng) => {
     //reverse geocode address
     setLoading(true);
-    const result = await client.post('/reverseGeocode', {
+    const { data } = await client.post('/reverseGeocode', {
       lat,
       lng,
     });
-    const { data } = result;
     if (data && data.status === 'OK') {
       setRestaurantAddress(data.address);
     }

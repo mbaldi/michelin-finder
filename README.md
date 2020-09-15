@@ -1,68 +1,69 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Michelin restaurant finder
 
-## Available Scripts
+This repo contains an assignment for Emotive
 
-In the project directory, you can run:
+This is a simple web application that finds Michelin-rated restaurants near a specific address (within a 50 mile radius)
 
-### `yarn start`
+It relies on Google's Geocoding, Reverse Geocoding and Places APIs
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Tech Stack
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+- Backend
 
-### `yarn test`
+  - Node.js using [Sails](https://sailsjs.com/)
+  - Tests using [Mocha](https://mochajs.org/) and [SuperTest](https://github.com/visionmedia/supertest)
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Frontend
 
-### `yarn build`
+  - React.js using [Create React App](https://github.com/facebook/create-react-app)
+  - Snapshot tests using [Jest](https://jestjs.io/) and [Enzime](https://enzymejs.github.io/enzyme/)
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Deployment with Docker
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## Requirements
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- A google API Key, Instructions [here](https://support.google.com/googleapi/answer/6158862?hl=en) (You need to enable billing on your project).
+- Enable the following APIs in the Google API console:
+  - Maps Javascript API
+  - Places API
+  - Geocoding API
+- Restrict the API key to the 3 APIs listed Above
+- docker and docker-compose
 
-### `yarn eject`
+## Run the Application
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+1. Copy your api key inside the following files (replace the placeholders)
+   - `env`
+   - `finder-api/.env`
+2. run `docker-compose up --build`
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The application will be available in http://localhost:3000
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Run tests
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Requires Node.js v12 and yarn
 
-## Learn More
+To test the frontend
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+$ yarn install
+$ yarn test
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+To test the backend
 
-### Code Splitting
+```
+$ cd finder-api
+$ npm install
+$ npm run test
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+## TODO
 
-### Analyzing the Bundle Size
+- Browser location detection
+- Mobile UI optimizacion
+- Street view API?
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+# Credits
 
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Michelin restaurants database from [https://github.com/NicolaFerracin/michelin-stars-restaurants-api](https://github.com/NicolaFerracin/michelin-stars-restaurants-api)

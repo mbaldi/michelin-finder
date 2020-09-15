@@ -34,10 +34,10 @@ const App = () => {
 
   const handleAutoCompleteClick = async (address) => {
     //geocode address
-    const response = await client.post('/geocode', {
+    const { data } = await client.post('/geocode', {
       address,
     });
-    setLocation(response.data);
+    setLocation(data);
   };
 
   return (

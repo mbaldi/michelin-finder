@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import RestaurantCard from '../components/RestaurantCard';
+import RestaurantCard from '../../components/RestaurantCard';
 
 describe('Gallery', () => {
   it('renders component', () => {
