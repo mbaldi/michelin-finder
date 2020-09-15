@@ -4,10 +4,22 @@ This repo contains an assignment for Emotive
 
 This is a simple web application that finds Michelin-rated restaurants near a specific address (within a 50 mile radius)
 
-It relies on Google's Geocoding, Reverse Geocoding and Places APIs
+The App relies on Google's Geocoding, Reverse Geocoding and Places APIs
 
 ## Live Demo
 https://michelin-finder.herokuapp.com/
+
+## Motivation
+The app is interesting because:
+
+- The app can tell you how far away you are from a world class restaurant
+- Can calculate a route so you can see how far away you'd have to drive and for 
+how long (by linking to Google directions)
+
+The official Michelin app does not provide those features
+
+Biggest problem in time would be to exceed the geocoding api quotas which can result in a hefty bill.
+It can be avoided by caching the geocoding of all restaurants in the backend and implementing location detection in the browser
 
 ## Tech Stack
 
